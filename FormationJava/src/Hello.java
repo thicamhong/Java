@@ -6,7 +6,7 @@ public class Hello
 	public static void main(String[] args)
 	{
 		/* TP1 */
-		// System.out.println("Hello World");
+		System.out.println("Hello World");
 
 		/* TP2 */
 		int i = 2;
@@ -680,9 +680,12 @@ public class Hello
 	{
 		int newLength = tab.length;
 
+		// This loop defines the size of the table where the permutation will be done
+		// The size is decrease to 1 for each loop
 		for (int i = tab.length; i >= 1; i--)
 		{
 
+			// Loop on the under table
 			for (int j = 0; j < (newLength - 1); j++)
 			{
 				// Permut the values if tab[j] is greater than tab[j + 1]
@@ -695,6 +698,17 @@ public class Hello
 		}
 	}
 
+	
+	/**
+	 * Sort the table according to the minimum way :
+	 * - Create a new table with the same size as the input 
+	 * - Define the max of the input
+	 * - Define the min of the input. Save this value in the new table
+	 * - In the input, put the (max+1) at the index where the min was found
+	 * - Repeat the operations
+	 * @param tab The table to sort
+	 * @return A new sorted table 
+	 */
 	public static int[] SortMin(int[] tab)
 	{		
 		// Create a new table with the same size as the inou parameter
@@ -736,10 +750,17 @@ public class Hello
 		return newTab;
 	}
 
+	
+	/**
+	 * Calculate the factorial of a number
+	 * @param n The number to calculate
+	 * @return The factorial of the number
+	 */
 	public static int factorial(int n)
 	{
 		int res = 1;
 
+		// Do the operation : n! = 1 * 2 * 3 * ...* (n-1) * n
 		for (int i = 0; i < n; i++)
 		{
 			res *= (n - i);
@@ -749,7 +770,17 @@ public class Hello
 	}
 
 	
-	
+	/**
+	 * Do the recursive sum :
+	 * - For each index of the table
+	 *   - do the sum from (index+1) to (length-1)
+	 *   - add the result to the tag[index]
+	 *   - save this value 
+	 *   - repeat
+	 * - Do the sum of the saved values and return it
+	 * @param tab The table 
+	 * @return The recursive sum 
+	 */
 	public static int sumRecursive(int[] tab)
 	{
 		int res = 0;
@@ -767,7 +798,7 @@ public class Hello
 		}
 		
 		
-		display(newTab);
+		//display(newTab);
 		return sum(newTab);
 	}
 }
