@@ -175,6 +175,27 @@ public class Hello
 		 * display(myTab2); insert(myTab2, myTab2.length-1, -12);
 		 * display(myTab2);
 		 */
+		
+	/*	
+		Book b1 = new Book();
+		b1.title="Java";
+		
+		Book b2 = new Book();
+		b2.title = "DotNet";
+		
+		Book b3 = new Book();
+		b3.title = b1.title;
+		System.out.println("Title of b3 :" + b3.title);
+		
+		if(b3 == b1)
+		{
+			System.out.println("b3 égale a b1");
+		}
+		else
+		{
+			System.out.println("b3 différent de b1");
+		}
+	*/		
 	}
 
 	/* TP : ecrire la fonction add */
