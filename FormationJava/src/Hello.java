@@ -195,7 +195,64 @@ public class Hello
 		{
 			System.out.println("b3 différent de b1");
 		}
-	*/		
+	*/	
+		
+		Book b = new Book();
+		b.setId(1);
+		b.setIsbn("135434KLMY1354");
+		b.setLanguage("fr-FR");
+		b.setNbPage(800);
+		b.setPrice(79.59);
+		b.setTitle("L'histoire de ma vie");
+		
+		System.out.println("b.title = " + b.getTitle());
+		System.out.println("b.price = " + b.getPrice());
+		System.out.println("b.nbPage = " + b.getNbPage());
+		System.out.println("b.Language = " + b.getLanguage());
+		System.out.println("b.isbn = " + b.getIsbn());
+		System.out.println("b.id = " + b.getId());
+		
+		
+		Book b2 = new Book();
+		b2.setId(2);
+		b2.setIsbn("57213546874DGHG");
+		b2.setLanguage("jap-JN");
+		b2.setNbPage(1000);
+		b2.setPrice(79.59);
+		b2.setTitle("Hayao Miyazaki en intime");
+		Publisher publisher = new Publisher();
+		publisher.setName("GLENAT");
+		publisher.setPhoneStandard("+33 01 45 78 96 26");
+		publisher.setSiret(647213387);
+		publisher.setWebSite("www.glenat.fr");
+		publisher.setMailStandard("accueil@glenat.fr");
+		b2.setPublisher(publisher);
+		Author newAuthor1 = new Author();
+		newAuthor1.setFirstName("Tartanpion");
+		newAuthor1.setLastName("TrucNuche");
+		b2.addAuthor(newAuthor1);
+		Author newAuthor2 = new Author();
+		newAuthor2.setFirstName("Machin");
+		newAuthor2.setLastName("Chouette");
+		b2.addAuthor(newAuthor2);
+		Author newAuthor3 = new Author();
+		newAuthor3.setFirstName("Germaine");
+		newAuthor3.setLastName("Datebayo");
+		b2.addAuthor(newAuthor3);
+		
+		b2.display();
+		
+		
+		Counter c1 = new Counter();
+		Counter c2 = new Counter();
+		System.out.println("\nCounter c1 : " + c1.increment() + " " + c1.increment() + " " + c1.increment());
+		System.out.println("\nCounter c2 : " + c2.increment() + " " + c2.increment() + " " + c2.increment());
+		
+		// Same as : 
+		System.out.println("\nCounter : " + Counter.increment()+ " " + Counter.increment()+ " " + Counter.increment());
+		
+		
+		
 	}
 
 	/* TP : ecrire la fonction add */
