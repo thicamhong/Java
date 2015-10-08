@@ -21,9 +21,22 @@ public class Book
 	private Publisher publisher;
 	private Author[] authors = new Author[10];
 	private int nbAuthors = 0;
+	private BookCategory category;
 	
 	
 	
+	public BookCategory getCategory()
+	{
+		return category;
+	}
+
+
+	public void setCategory(BookCategory category)
+	{
+		this.category = category;
+	}
+
+
 	public Author[] getAuthors()
 	{
 		return authors;
@@ -73,6 +86,19 @@ public class Book
 		else
 		{
 			System.out.println(authors[0].toString());
+		}
+		
+		String bookCategory ="";
+		switch(category)
+		{
+			case SF :  bookCategory = "Science Fiction";
+						break;
+			case Computer :  bookCategory = "Computer";
+							break;
+			case Database :  bookCategory = "Database";
+							break;
+			default : bookCategory = "Manga";
+			break;
 		}
 		publisher.display();
 	}

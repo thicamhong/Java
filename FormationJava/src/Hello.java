@@ -239,10 +239,11 @@ public class Hello
 		newAuthor3.setFirstName("Germaine");
 		newAuthor3.setLastName("Datebayo");
 		b2.addAuthor(newAuthor3);
-		
+		b2.setCategory(BookCategory.Computer);
+			
 		b2.display();
 		
-		
+	/*	
 		Counter c1 = new Counter();
 		Counter c2 = new Counter();
 		System.out.println("\nCounter c1 : " + c1.increment() + " " + c1.increment() + " " + c1.increment());
@@ -250,6 +251,7 @@ public class Hello
 		
 		// Same as : 
 		System.out.println("\nCounter : " + Counter.increment()+ " " + Counter.increment()+ " " + Counter.increment());
+	*/	
 		
 		
 		
