@@ -1,5 +1,10 @@
 import java.util.Random;
 
+import com.mi2.formation.media.Author;
+import com.mi2.formation.media.Book;
+import com.mi2.formation.media.BookCategory;
+import com.mi2.formation.media.Publisher;
+
 public class Hello
 {
 

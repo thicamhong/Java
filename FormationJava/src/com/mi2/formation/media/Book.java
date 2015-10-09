@@ -1,3 +1,4 @@
+package com.mi2.formation.media;
 import java.util.Date;
 
 /**
