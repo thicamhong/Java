@@ -3,6 +3,8 @@ import java.util.Random;
 import com.mi2.formation.media.Author;
 import com.mi2.formation.media.Book;
 import com.mi2.formation.media.BookCategory;
+import com.mi2.formation.media.Media;
+import com.mi2.formation.media.MediaException;
 import com.mi2.formation.media.Publisher;
 
 public class Hello
@@ -235,18 +237,25 @@ public class Hello
 		Author newAuthor1 = new Author();
 		newAuthor1.setFirstName("Tartanpion");
 		newAuthor1.setLastName("TrucNuche");
-		b2.addAuthor(newAuthor1);
-		Author newAuthor2 = new Author();
-		newAuthor2.setFirstName("Machin");
-		newAuthor2.setLastName("Chouette");
-		b2.addAuthor(newAuthor2);
-		Author newAuthor3 = new Author();
-		newAuthor3.setFirstName("Germaine");
-		newAuthor3.setLastName("Datebayo");
-		b2.addAuthor(newAuthor3);
+		try
+		{
+			b2.addAuthor(newAuthor1);
+			Author newAuthor2 = new Author();
+			newAuthor2.setFirstName("Machin");
+			newAuthor2.setLastName("Chouette");
+			b2.addAuthor(newAuthor2);
+			Author newAuthor3 = new Author();
+			newAuthor3.setFirstName("Germaine");
+			newAuthor3.setLastName("Datebayo");
+			b2.addAuthor(newAuthor3);
+		} catch (MediaException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		b2.setCategory(BookCategory.Computer);
 			
-		b2.display();
+		System.out.println(b2.toString());
 		
 	/*	
 		Counter c1 = new Counter();
@@ -258,6 +267,14 @@ public class Hello
 		System.out.println("\nCounter : " + Counter.increment()+ " " + Counter.increment()+ " " + Counter.increment());
 	*/	
 		
+		/*
+		Media b3 = new Book();
+		int nbPages = ((Book)b3).getNbPage();
+		*/
+		
+		Media m = new Book();
+		m.setPrice(10);
+		System.out.println("The tax is :" + m.getVATPrice());
 		
 		
 	}

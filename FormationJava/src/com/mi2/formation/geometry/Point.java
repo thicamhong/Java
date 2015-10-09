@@ -3,8 +3,8 @@ package com.mi2.formation.geometry;
 public class Point
 {
 
-	public int x;
-	public int y;
+	private int x;
+	private int y;
 	
 	
 	public void display()

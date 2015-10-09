@@ -9,15 +9,16 @@ public class Publisher
 	private String mailStandard;
 	
 	
-	public void display()
+	public String toString()
 	{
-		System.out.println("\t Information on the publisher :");
-		System.out.println("\t\t Name\t: " + name);
-		System.out.println("\t\t SIRET\t: " + siret);
-		System.out.println("\t\t WebSite\t: " + webSite);
-		System.out.println("\t\t Phone Standard\t: " + phoneStandard);
-		System.out.println("\t\t Mail Standard\t: " + mailStandard);
-
+		String myPublisher = "\t Information on the publisher :\n";
+		myPublisher += "\t\t Name\t: " + name + "\n";
+		myPublisher += "\t\t SIRET\t: " + siret + "\n";
+		myPublisher += "\t\t WebSite\t: " + webSite + "\n";
+		myPublisher += "\t\t Phone Standard\t: " + phoneStandard + "\n";
+		myPublisher +="\t\t Mail Standard\t: " + mailStandard + "\n";
+		
+		return myPublisher;
 	}
 
 	public Publisher()

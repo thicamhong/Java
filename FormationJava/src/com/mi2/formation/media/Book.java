@@ -9,84 +9,49 @@ import java.util.Date;
  * @author adminlocal
  *
  */
-public class Book
+public class Book extends Media
 {
 
-	private String title;
-	private int id;
-	private Date date;
 	private int nbPage;
 	private String isbn;
-	private double price;
-	private String language;
-	private Publisher publisher;
-	private Author[] authors = new Author[10];
-	private int nbAuthors = 0;
 	private BookCategory category;
+
 	
 	
+	@Override
+	public double getVATPrice()
+	{
+		return getPrice()*1.05;
+	}
 	
-	public BookCategory getCategory()
+
+
+	public String toString()
 	{
-		return category;
-	}
-
-
-	public void setCategory(BookCategory category)
-	{
-		this.category = category;
-	}
-
-
-	public Author[] getAuthors()
-	{
-		return authors;
-	}
-
-
-	public int getNbAuthors()
-	{
-		return nbAuthors;
-	}
-
-
-	public void setAuthors(Author[] authors)
-	{
-		this.authors = authors;
-	}
-
-	// The addAuthor method will increment this data
-/*
-	public void setNbAuthors(int nbAuthors)
-	{
-		this.nbAuthors = nbAuthors;
-	}
-*/
-
-	public void display()
-	{
-		System.out.println("\n\nInformation on the book :");
-		System.out.println("\t Title\t: " + title);
-		System.out.println("\t ID\t: " + id);
-		//System.out.println("\t date:\t" + );
-		System.out.println("\t nbPage\t: " + nbPage);
-		System.out.println("\t ISBN\t: " + isbn);
-		System.out.println("\t Price\t: " + price);
-		System.out.println("\t Language\t: " + language);
+		String myBook = "\n\nInformation on the book :\n";
+		myBook += "\t Title\t: " + getTitle() + "\n";
+		myBook += "\t ID\t: " + getId() + "\n";
+		//myBook += "\t date:\t" + );
+		myBook += "\t nbPage\t: " + nbPage + "\n";
+		myBook += "\t ISBN\t: " + isbn + "\n";
+		myBook += "\t Price\t: " + getPrice() + "\n";
+		myBook += "\t Language\t: " + getLanguage() + "\n";
 		
-		if( nbAuthors>=2 )
+		
+		Author[] authors = getAuthors();
+		if( getNbAuthors()>=2 )
 		{
-			System.out.println("\t Authors number\t: " + nbAuthors);
+			myBook += "\t Authors number\t: " + getNbAuthors() + "\n";
 		
 			// Display the authors
-			for(int i=0; i<nbAuthors; i++)
+			for(int i=0; i<getNbAuthors(); i++)
 			{
-				System.out.println(authors[i].toString());
+				myBook += authors[i].toString();
 			}
 		}
 		else
 		{
-			System.out.println(authors[0].toString());
+			myBook += authors[0].toString();
 		}
 		
 		String bookCategory ="";
@@ -101,54 +66,16 @@ public class Book
 			default : bookCategory = "Manga";
 			break;
 		}
-		publisher.display();
+		
+		myBook += "\t Book category\t: " + bookCategory + "\n";
+		myBook += getPublisher().toString();
+		
+		return myBook;
 	}
 	
 	
-	public void addAuthor(Author newAuthor)
-	{
-		if(nbAuthors<authors.length)
-		{
-			//authors[nbAuthors] = new Author();
-			authors[nbAuthors] = newAuthor;
-			
-			nbAuthors += 1;
-			
-			// OU
-			//authors[nbAuthors++] = newAuthor;
-		}
-	}
 	
-	public Publisher getPublisher()
-	{
-		return publisher;
-	}
 
-
-	public void setPublisher(Publisher publisher)
-	{
-		this.publisher = publisher;
-	}
-
-
-	public String getTitle()
-	{
-		return title;
-	}
-	
-	
-	public int getId()
-	{
-		return id;
-	}
-	
-	
-	public Date getDate()
-	{
-		return date;
-	}
-	
-	
 	public int getNbPage()
 	{
 		return nbPage;
@@ -161,35 +88,12 @@ public class Book
 	}
 	
 	
-	public double getPrice()
+	public BookCategory getCategory()
 	{
-		return price;
+		return category;
 	}
-	
-	
-	public String getLanguage()
-	{
-		return language;
-	}
-	
-	
-	public void setTitle(String title)
-	{
-		this.title = title;
-	}
-	
-	
-	public void setId(int id)
-	{
-		this.id = id;
-	}
-	
-	
-	public void setDate(Date date)
-	{
-		this.date = date;
-	}
-	
+
+
 	
 	public void setNbPage(int nbPage)
 	{
@@ -203,19 +107,19 @@ public class Book
 	}
 	
 	
-	public void setPrice(double price)
+		public void setCategory(BookCategory category)
 	{
-		this.price = price;
+		this.category = category;
 	}
-	
-	
-	public void setLanguage(String language)
-	{
-		this.language = language;
-	}	
 
-	
-	
+
+	// The addAuthor method will increment this data
+/*
+	public void setNbAuthors(int nbAuthors)
+	{
+		this.nbAuthors = nbAuthors;
+	}
+*/
 
 	
 }

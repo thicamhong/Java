@@ -32,9 +32,9 @@ public class Author
 
 	public String toString()
 	{
-		String authorIs = new String("");
+		String myAuthor = new String("");
 		
-		authorIs = "\t Author : " + firstName + " " + lastName;
-		return authorIs;
+		myAuthor = "\t Author : " + firstName + " " + lastName + "\n";
+		return myAuthor;
 	}
 }
