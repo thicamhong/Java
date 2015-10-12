@@ -1,8 +1,12 @@
+import java.util.List;
 import java.util.Random;
 
 import com.mi2.formation.media.Author;
 import com.mi2.formation.media.Book;
 import com.mi2.formation.media.BookCategory;
+import com.mi2.formation.media.Cart;
+import com.mi2.formation.media.Cd;
+import com.mi2.formation.media.Dvd;
 import com.mi2.formation.media.Media;
 import com.mi2.formation.media.MediaException;
 import com.mi2.formation.media.Publisher;
@@ -10,7 +14,7 @@ import com.mi2.formation.media.Publisher;
 public class Hello
 {
 
-	public static void main(String[] args)
+	public static void main(String[] args) throws MediaException
 	{
 		/* TP1 */
 		System.out.println("Hello World");
@@ -270,12 +274,53 @@ public class Hello
 		/*
 		Media b3 = new Book();
 		int nbPages = ((Book)b3).getNbPage();
-		*/
 		
 		Media m = new Book();
 		m.setPrice(10);
 		System.out.println("The tax is :" + m.getVATPrice());
+		*/
 		
+		CollectionTest collectTest = new CollectionTest();
+		
+		// Test on a list 
+		System.out.println("******************** TEST on LIST ************************");
+		for(Book bookList:collectTest.listTest())
+		{
+			System.out.println(bookList.toString());
+			
+		}
+		
+		// Test on a set : ECHEC car ajout de deux elements identiques
+		/*
+		System.out.println("******************** TEST on SET ************************");
+		for(Book bookSet : collectTest.setTest())
+		{
+			System.out.println(bookSet.toString());
+		}
+		*/
+		
+		// Test on a set
+		System.out.println("******************** TEST on MAP ************************");
+		for(int key : collectTest.mapTest().keySet())
+		{
+			System.out.println(key);
+			System.out.println(collectTest.mapTest().get(key));
+		}
+		
+		
+		
+		System.out.println("******************** TEST on CART ************************");
+		Media book = new Book();
+		book.setPrice(10);
+		Media cd = new Cd();
+		cd.setPrice(20);
+		Media dvd = new Dvd();
+		dvd.setPrice(30);
+		Cart myCart = new Cart();
+		myCart.getMedias().add(book);
+		myCart.getMedias().add(cd);
+		myCart.getMedias().add(dvd);
+		System.out.println(myCart.getVATPrice());
 		
 	}
 
@@ -301,8 +346,6 @@ public class Hello
 	 */
 	public static void display(int[] tabToDisplay)
 	{
-		System.out.println("\n\nContent of the table : ");
-
 		for (int i = 0; i < tabToDisplay.length; i++)
 		{
 			System.out.print(tabToDisplay[i] + " ");

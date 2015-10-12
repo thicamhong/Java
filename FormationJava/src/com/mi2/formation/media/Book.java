@@ -1,5 +1,4 @@
 package com.mi2.formation.media;
-import java.util.Date;
 
 /**
  * 
@@ -39,21 +38,21 @@ public class Book extends Media
 		
 		
 		Author[] authors = getAuthors();
-		if( getNbAuthors()>=2 )
-		{
-			myBook += "\t Authors number\t: " + getNbAuthors() + "\n";
+		//if( getNbAuthors()>=2 )
+		//{
+			//myBook += "\t Authors number\t: " + getNbAuthors() + "\n";
 		
 			// Display the authors
 			for(int i=0; i<getNbAuthors(); i++)
 			{
 				myBook += authors[i].toString();
 			}
-		}
-		else
-		{
-			myBook += authors[0].toString();
-		}
-		
+		//}
+		//else
+		//{
+		//	myBook += authors[0].toString();
+		//}
+/*		
 		String bookCategory ="";
 		switch(category)
 		{
@@ -69,7 +68,7 @@ public class Book extends Media
 		
 		myBook += "\t Book category\t: " + bookCategory + "\n";
 		myBook += getPublisher().toString();
-		
+	*/	
 		return myBook;
 	}
 	
