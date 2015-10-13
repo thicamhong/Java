@@ -1,3 +1,5 @@
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -322,6 +324,25 @@ public class Hello
 		myCart.getMedias().add(dvd);
 		System.out.println(myCart.getVATPrice());
 		
+
+		System.out.println("******************** TEST on I/O ************************");
+		TestFile tf = new TestFile();
+		// Double \ by \ otherwise java doesn't recognize it
+		// Or replace \ by /
+		try
+		{
+			tf.readFile("C:\\Users\\adminlocal\\Documents\\ctran\\BookList.csv");
+			
+			System.out.println("Test readBook");
+			List<Book> books = new ArrayList<Book>();
+			books = tf.readBook("C:\\Users\\adminlocal\\Documents\\ctran\\BookList.csv");
+			
+			
+		} catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/* TP : ecrire la fonction add */
