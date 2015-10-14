@@ -1,4 +1,4 @@
-package com.mi2.formation.geometry;
+package com.m2i.formation.geometry;
 
 public class Point
 {

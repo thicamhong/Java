@@ -3,15 +3,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.mi2.formation.media.Author;
-import com.mi2.formation.media.Book;
-import com.mi2.formation.media.BookCategory;
-import com.mi2.formation.media.Cart;
-import com.mi2.formation.media.Cd;
-import com.mi2.formation.media.Dvd;
-import com.mi2.formation.media.Media;
-import com.mi2.formation.media.MediaException;
-import com.mi2.formation.media.Publisher;
+import com.m2i.formation.media.entities.Author;
+import com.m2i.formation.media.entities.Book;
+import com.m2i.formation.media.entities.BookCategory;
+import com.m2i.formation.media.entities.Cart;
+import com.m2i.formation.media.entities.Cd;
+import com.m2i.formation.media.entities.Dvd;
+import com.m2i.formation.media.entities.Media;
+import com.m2i.formation.media.entities.MediaException;
+import com.m2i.formation.media.entities.Publisher;
+import com.m2i.formation.media.repositories.BookRepository;
 
 public class Hello
 {
@@ -331,11 +332,11 @@ public class Hello
 		// Or replace \ by /
 		try
 		{
-			tf.readFile("C:\\Users\\adminlocal\\Documents\\ctran\\BookList.csv");
+			tf.readFile("C:\\Users\\adminlocal\\Documents\\ctran\\BookList_old.csv");
 			
 			System.out.println("Test readBook");
 			List<Book> books = new ArrayList<Book>();
-			books = tf.readBook("C:\\Users\\adminlocal\\Documents\\ctran\\BookList.csv");
+			//books = tf.readBook("C:\\Users\\adminlocal\\Documents\\ctran\\BookList.csv");
 			
 			
 		} catch (IOException e)
@@ -343,6 +344,48 @@ public class Hello
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		Singleton singleton = Singleton.getInstance();
+		
+
+		System.out.println("******************** TEST on BOOK REPOSITORY ************************");
+		BookRepository br = new BookRepository();
+		try
+		{
+			List<Book> books = new ArrayList<Book>();
+			br.setUri("C:\\Users\\adminlocal\\Documents\\ctran\\BookList.txt");
+			books = br.getAll();
+			System.out.println("AFFICHE LA LISTE DES LIVRES :");
+			for(Book bo:books)
+			{
+				System.out.println(bo.toString());
+			}
+			
+			System.out.println("AFFICHE LE LIVRE AVEC L'ID=2 :");
+			System.out.println(br.getById(2).toString());
+			
+			System.out.println("AFFICHE LES LIVRES AVEC LE PRIX=15 :");
+			books = br.getByPrice(15);
+			for(Book bo:books)
+			{
+				System.out.println(bo.toString());
+			}
+			
+			System.out.println("AFFICHE LES LIVRES DONT LE TITRE CONTIENT LOUKOUM:");
+			books = br.getByTitle("LA");
+			for(Book bo:books)
+			{
+				System.out.println(bo.toString());
+			}
+			
+			
+		} catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		
 	}
 
 	/* TP : ecrire la fonction add */

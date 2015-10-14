@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.mi2.formation.media.Author;
-import com.mi2.formation.media.Book;
-import com.mi2.formation.media.MediaException;
+import com.m2i.formation.media.entities.Author;
+import com.m2i.formation.media.entities.Book;
+import com.m2i.formation.media.entities.MediaException;
 
 public class CollectionTest
 {

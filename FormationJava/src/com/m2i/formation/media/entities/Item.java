@@ -1,4 +1,4 @@
-package com.mi2.formation.media;
+package com.m2i.formation.media.entities;
 
 public class Item implements IItem
 {
