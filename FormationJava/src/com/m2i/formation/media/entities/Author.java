@@ -1,9 +1,10 @@
 package com.m2i.formation.media.entities;
 
-public class Author
+public class Author implements IEntity
 {
 	private String firstName; 
 	private String lastName;
+	private int id;
 
 	public Author()
 	{
@@ -18,6 +19,17 @@ public class Author
 	public String getLastName()
 	{
 		return lastName;
+	}
+
+	
+	public int getId()
+	{
+		return id;
+	}
+
+	public void setId(int id)
+	{
+		this.id = id;
 	}
 
 	public void setFirstName(String firstName)

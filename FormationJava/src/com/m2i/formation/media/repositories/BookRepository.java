@@ -300,4 +300,10 @@ public class BookRepository implements IRepository<Book>
 				
 		return publisher;
 	}
+
+	public void insert(Book b)
+	{
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -112,6 +112,16 @@ public class Book extends Media
 	}
 
 
+
+		public int getEvaluation()
+		{
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+
+
+
 	// The addAuthor method will increment this data
 /*
 	public void setNbAuthors(int nbAuthors)

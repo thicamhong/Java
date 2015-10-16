@@ -4,9 +4,10 @@ import java.io.IOException;
 import java.util.List;
 
 import com.m2i.formation.media.entities.Book;
+import com.m2i.formation.media.entities.IEntity;
 import com.m2i.formation.media.entities.MediaException;
 
-public interface IRepository <T>
+public interface IRepository <T extends IEntity>
 {
 	String getUri();
 	

@@ -22,9 +22,18 @@ public class EntitiesTest
 	@Test
 	public void vatPriceTest()
 	{
-		Media m = new Cd();
+		Media m = new Book();
 		m.setPrice(10);
 		Assert.assertEquals(10.5, m.getVATPrice(), 0.001);
 	}
+
+	@Test
+	public void testFirstTest()
+	{
+		Book b = new Book();
+		int eval = b.getEvaluation();
+		Assert.assertEquals(0, eval);
+	}
+
 
 }

@@ -6,10 +6,12 @@ import java.util.List;
 /*
  * Class to manage the cart
  */
-public class Cart
+public class Cart implements IEntity
 {
 
 	private List<Media> medias = new ArrayList<Media>();
+	
+	private int id;
 	
 	public Cart()
 	{
@@ -36,6 +38,16 @@ public class Cart
 	public List<Media> getMedias()
 	{
 		return medias;
+	}
+
+	public int getId()
+	{
+		return id;
+	}
+
+	public void setId(int id)
+	{
+		this.id = id;
 	}
 	
 	

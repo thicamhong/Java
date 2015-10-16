@@ -1,12 +1,13 @@
 package com.m2i.formation.media.entities;
 
-public class Publisher
+public class Publisher implements IEntity
 {
 	private String name; 
 	private int siret;
 	private String webSite;
 	private String phoneStandard;
 	private String mailStandard;
+	private int id;
 	
 	
 	public String toString()
@@ -29,6 +30,17 @@ public class Publisher
 	public String getName()
 	{
 		return name;
+	}
+
+	
+	public int getId()
+	{
+		return id;
+	}
+
+	public void setId(int id)
+	{
+		this.id = id;
 	}
 
 	public int getSiret()
