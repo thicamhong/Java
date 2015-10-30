@@ -1,6 +1,15 @@
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 import java.util.Random;
 
 import com.m2i.formation.media.entities.Author;
@@ -96,7 +105,7 @@ public class Hello
 
 		int toTest = 2;
 		for (i = 0; i < 500; i++)
-		{
+		{ 
 			boolean isPrime = true;
 			j = 2;
 
@@ -376,14 +385,125 @@ public class Hello
 			for(Book bo:books)
 			{
 				System.out.println(bo.toString());
+				
 			}
-			
 			
 		} catch (IOException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
+		
+		System.out.println("******************** TEST SELECT with the DataBase : MySql Media ************************");
+		
+		Properties properties = new Properties();
+		
+		try
+		{
+			properties.load(new FileInputStream("src/config.properties"));
+		}
+		catch (IOException e)
+		{
+			System.out.println("Error : load the properties : " + e);
+		}
+		
+		
+		
+		String driverDB = properties.getProperty("driverDB");
+		String uri = properties.getProperty("uriToDB") + properties.getProperty("DB") ;
+		System.out.println("uri=" + uri);
+		String loginDB = properties.getProperty("loginDB");
+		String pwdDB = properties.getProperty("pwdDB");
+		
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+
+		try
+		{
+			Class.forName(driverDB);
+		} 
+		catch (Exception ex)
+		{
+			System.out.println("Error : driver jdbc-odbc:" + ex);
+			
+		}			
+		
+		try
+		{
+			String strSQLSelect="SELECT id,title,price,nbPage,isbn,category,publicationDate,language from media where type=0;"; // Gets only the book
+			con = DriverManager.getConnection(uri,loginDB,pwdDB);
+           stmt=con.createStatement();
+            rs = stmt.executeQuery(strSQLSelect);
+            while (rs.next()) {
+                System.out.println("Information on the book id=" +rs.getInt("id") + " :");
+                System.out.println("\t Title : " + rs.getString("title"));
+                System.out.println("\t Price : " + rs.getDouble("price") + " €");
+                System.out.println("\t nbPage : " + rs.getInt("nbPage"));
+                System.out.println("\t ISBN : " + rs.getString("isbn"));
+                System.out.println("\t Category : " + rs.getString("category"));
+                System.out.println("\t Publication Date : " + rs.getDate("publicationDate"));
+                System.out.println("\t Language : " + rs.getString("language"));
+            }
+            
+            rs.close();
+            stmt.close();
+            
+        } catch (Exception ex ) {
+            System.out.println("SQL exception on SELECT : "+ex);
+        }
+/*
+		try
+		{
+			String strSQLUpdate="UPDATE id,title,price,nbPage,isbn,category,publicationDate,language from media where type=0;"; // Gets only the book
+            stmt=con.createStatement();
+            rs = stmt.executeQuery(strSQL);
+            while (rs.next()) {
+                System.out.println("Information on the book id=" +rs.getInt("id") + " :");
+                System.out.println("\t Title : " + rs.getString("title"));
+                System.out.println("\t Price : " + rs.getDouble("price") + " €");
+                System.out.println("\t nbPage : " + rs.getInt("nbPage"));
+                System.out.println("\t ISBN : " + rs.getString("isbn"));
+                System.out.println("\t Category : " + rs.getString("category"));
+                System.out.println("\t Publication Date : " + rs.getDate("publicationDate"));
+                System.out.println("\t Language : " + rs.getString("language"));
+            }
+            
+            rs.close();
+            stmt.close();
+            
+        } catch (Exception ex ) {
+            System.out.println("SQL exception on SELECT : "+ex);
+        }
+*/
+		
+		finally
+		{
+			if( stmt != null )
+				try
+				{
+					stmt.close();
+				} catch (SQLException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
+			if( con != null )
+				try
+				{
+					con.close();
+				} catch (SQLException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		}
+		
+
 
 		
 	}

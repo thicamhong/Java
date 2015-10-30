@@ -1,6 +1,7 @@
 package com.m2i.formation.media.repositories;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import com.m2i.formation.media.entities.Book;
@@ -13,7 +14,7 @@ public interface IRepository <T extends IEntity>
 	
 	void setUri(String uri);
 	
-	List<T> getAll() throws IOException, MediaException;
+	List<T> getAll() throws IOException, MediaException, SQLException;
 	
 	T getById(int Id) throws IOException, MediaException;
 	

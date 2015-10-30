@@ -301,9 +301,9 @@ public class BookRepository implements IRepository<Book>
 		return publisher;
 	}
 
-	public void insert(Book b)
+	public void insert(Book b) throws IOException, MediaException
 	{
-		// TODO Auto-generated method stub
+		this.cacheFactory().add(b);
 		
 	}
 }

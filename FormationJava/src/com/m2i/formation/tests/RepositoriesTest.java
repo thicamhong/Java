@@ -1,6 +1,7 @@
 package com.m2i.formation.tests;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,9 +9,9 @@ import org.junit.*;
 
 import org.junit.Test;
 
-import com.m2i.formation.media.entities.Author;
 import com.m2i.formation.media.entities.Book;
 import com.m2i.formation.media.entities.MediaException;
+import com.m2i.formation.media.repositories.BookDBRepository;
 import com.m2i.formation.media.repositories.BookRepository;
 
 public class RepositoriesTest
@@ -86,7 +87,7 @@ public class RepositoriesTest
 		Assert.assertEquals(1, booksList.size());
 	}
 	
-	
+/*	
 	@Test
 	public void insertBookTest() throws IOException, MediaException
 	{
@@ -94,11 +95,30 @@ public class RepositoriesTest
 		b.setTitle("Java");
 		b.setPrice(9.99);
 		BookRepository br = new BookRepository();
+		br.setUri("C:\\Users\\adminlocal\\Documents\\ctran\\BookList.txt");
 		int nbBook = br.getAll().size();
 		br.insert(b);
 		Assert.assertEquals(nbBook+1, br.getAll().size());
 	}
+*/	
 	
-	
+	@Test
+	public void getAllDBTest() throws SQLException, IOException, MediaException, ClassNotFoundException
+	{
+		BookDBRepository repo = new BookDBRepository();
+		List<Book> bookList = repo.getAll();
+		Assert.assertTrue(bookList.size()>0);
+		
+	}
 
+/*	
+	@Test
+	public void getByIdDBTest() throws SQLException, IOException, MediaException
+	{
+		BookDBRepository repo = new BookDBRepository();
+		Book book = repo.getById();
+		Assert.assertTrue(bookList.size()>0);
+		
+	}
+*/
 }
