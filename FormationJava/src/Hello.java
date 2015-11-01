@@ -341,7 +341,7 @@ public class Hello
 		// Or replace \ by /
 		try
 		{
-			tf.readFile("C:\\Users\\adminlocal\\Documents\\ctran\\BookList_old.csv");
+			tf.readFile("D:\\Travail\\BookList_old.csv");
 			
 			System.out.println("Test readBook");
 			List<Book> books = new ArrayList<Book>();
@@ -362,7 +362,7 @@ public class Hello
 		try
 		{
 			List<Book> books = new ArrayList<Book>();
-			br.setUri("C:\\Users\\adminlocal\\Documents\\ctran\\BookList.txt");
+			br.setUri("D:\\Travail\\BookList.txt");
 			books = br.getAll();
 			System.out.println("AFFICHE LA LISTE DES LIVRES :");
 			for(Book bo:books)

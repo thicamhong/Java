@@ -69,7 +69,11 @@ public class BookDBRepository implements IRepository<Book>
 		
 		stmt =cnx.createStatement();
 		
-		String strSql = "SELECT id,title,price,nbPage,isbn,category,publicationDate,language from media where type=0;";
+		// Select only the book in the media table (type = 0)
+		String strSql = "SELECT ";
+		strSql += "id,title,price,nbPage,isbn,category,publicationDate,language ";
+		strSql += "from media ";
+		strSql += "where type=0;";
 		
 		ResultSet rs = stmt.executeQuery(strSql);
 		
@@ -109,15 +113,61 @@ public class BookDBRepository implements IRepository<Book>
 	}
 
 	@Override
-	public Book getById(int Id) throws IOException, MediaException
+	public Book getById(int Id) throws IOException, MediaException, SQLException
 	{
-		// TODO Auto-generated method stub
-		return null;
+		Book book = new Book();
+		
+		stmt =cnx.createStatement();
+		
+		// Select only the book in the media table (type = 0)
+		String strSql = "SELECT ";
+		strSql += "id,title,price,nbPage,isbn,category,publicationDate,language ";
+		strSql += "FROM media ";
+		strSql += "WHERE type=0 ";
+		strSql += "AND id=" + Id + ";";
+		
+		ResultSet rs = stmt.executeQuery(strSql);
+		
+		while (rs.next()) {
+			book.setId(rs.getInt("id"));
+			book.setTitle(rs.getString("title"));
+			book.setPrice(rs.getDouble("price"));
+			book.setNbPage(rs.getInt("nbPage"));
+			book.setIsbn(rs.getString("isbn"));
+			
+			switch(rs.getInt("category"))
+			{
+				case 0 : book.setCategory(BookCategory.SF);
+						break;
+				
+				case 1 : book.setCategory(BookCategory.Computer);
+							break;
+							
+				case 2 : book.setCategory(BookCategory.Database);
+							break;
+							
+				default : book.setCategory(BookCategory.Manga);
+							break;
+			}
+			
+			book.setDate(rs.getDate("publicationDate"));
+			book.setLanguage(rs.getString("language"));
+			
+		}
+         
+         rs.close();
+         stmt.close();
+		
+		
+		
+		
+		return book;
 	}
 
 	@Override
 	public List<Book> getByPrice(double price) throws IOException, MediaException
 	{
+		
 		// TODO Auto-generated method stub
 		return null;
 	}
