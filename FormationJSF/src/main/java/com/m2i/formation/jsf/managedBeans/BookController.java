@@ -5,7 +5,8 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean(name="bookController")
 public class BookController {
 
-	private BookBean book;
+	// Faire comme Angular sinon book est null
+	private BookBean book = new BookBean();
 	
 	public BookController() {
 		// TODO Auto-generated constructor stub
@@ -25,7 +26,21 @@ public class BookController {
 		book.setId(1);
 		book.setTitle("Sample");
 		book.setPrice(10);
-		return "showBook";
+		
+		// Evite de retourner "showBook" ==> Evite les fautes d'orthographes
+		// En passant les enum, si ce n'est pas bon, cela va souligner en rouge
+		return BookControllerEnum.showBook.toString();
+		
+	}
+	
+	
+	public String insertBook() {
+		//insert dans la base de donnee
+		// Si on y accede, on aura les donnees
+		
+		// Evite de retourner "showBook" ==> Evite les fautes d'orthographes
+		// En passant les enum, si ce n'est pas bon, cela va souligner en rouge
+		return BookControllerEnum.showBook.toString();
 		
 	}
 
