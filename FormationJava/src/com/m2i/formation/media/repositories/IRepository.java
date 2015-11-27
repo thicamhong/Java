@@ -16,7 +16,7 @@ public interface IRepository <T extends IEntity>
 	
 	List<T> getAll() throws IOException, MediaException, SQLException;
 	
-	T getById(int Id) throws IOException, MediaException;
+	T getById(int Id) throws IOException, MediaException, SQLException;
 	
 	List<T> getByPrice(double price) throws IOException, MediaException;
 	
