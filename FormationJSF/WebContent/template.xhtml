@@ -1,30 +1,57 @@
 <!-- On commente ca sinon cela afichera le contenu des jsp : <?xml version="1.0" encoding="ISO-8859-1" ?> -->
-<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" version="2.0">
-    <jsp:directive.page language="java"
-        contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" />
-    <jsp:text>
-        <![CDATA[ <?xml version="1.0" encoding="ISO-8859-1" ?> ]]>
-    </jsp:text>
-    <jsp:text>
-        <![CDATA[ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> ]]>
-    </jsp:text>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
-</head>
-<body>
-<f:view>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" version="2.0">
+	<jsp:directive.page language="java"
+		contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" />
+	<jsp:text>
+		<![CDATA[ <?xml version="1.0" encoding="ISO-8859-1" ?> ]]>
+	</jsp:text>
+	<jsp:text>
+		<![CDATA[ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> ]]>
+	</jsp:text>
 
-<!-- 
- -->
-Hello world
-
-<!-- h est l'extension de JSF -->
-<!-- #name => name du @ManagedBean -->
-<!-- myInt : propriete public de cette classe #name -->
-<h:outputLabel value="#{simpleBean.myInt}" />
-</f:view>
-</body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<title>${title}</title>
+		
+		<h:outputStylesheet name="css/bootstrap.css"></h:outputStylesheet>
+		<h:outputStylesheet name="css/app.css"></h:outputStylesheet>
+		<h:outputStylesheet name="css/animations.css"></h:outputStylesheet>
+		
+		 <h:outputScript name="js/bootstrap.js"></h:outputScript>
+	</h:head>
+	
+	<h:body>
+	
+	<div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#/phones">Home</a></li>
+                    <li><a href="#/about">About</a></li>
+                    <li><a href="http://www.cyrilvincent.com">CVC</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+	
+ 	
+	<!-- 
+		<div>
+			<ui:insert name="index"> </ui:insert>
+			<ui:insert name="data"> </ui:insert>
+		</div>
+	 -->	
+		<div>
+		</div>
+		
+		<div>
+		</div>
+	</h:body>
+	
 </html>
+
 </jsp:root>

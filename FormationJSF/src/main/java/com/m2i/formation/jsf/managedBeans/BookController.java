@@ -22,10 +22,14 @@ public class BookController {
 	//			===> on va declarer un attribut BookBean et enlever la variable local ds la methode
 	// ATTENTION : il n'y a pas de parametres input a la methode. Il faut passer par les proprietes du controller
 	public String getSampleBook() {
+		
+		// Ce code la est plus pour du test, c'est du metier => Dc rien a faire ici
+		// Normalement, il devrait faire un acces a la BDD => Repository
 		book = new BookBean();
 		book.setId(1);
 		book.setTitle("Sample");
 		book.setPrice(10);
+		//
 		
 		// Evite de retourner "showBook" ==> Evite les fautes d'orthographes
 		// En passant les enum, si ce n'est pas bon, cela va souligner en rouge
@@ -42,6 +46,20 @@ public class BookController {
 		// En passant les enum, si ce n'est pas bon, cela va souligner en rouge
 		return BookControllerEnum.showBook.toString();
 		
+	}
+	
+	
+	public String getBookById() {
+		// Acces a la BDD : Appel
+		
+		// Fake data car on ne touche pas encore a la BDD
+		// On ne renseigne pas l'ID car deja renseigne
+		book.setTitle("Sample");
+		book.setPrice(10);
+		
+		// Si c'etait en Spring, ce sera en 1 ligne
+		
+		return BookControllerEnum.showBook.toString();
 	}
 
 
