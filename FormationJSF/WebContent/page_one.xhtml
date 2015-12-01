@@ -30,7 +30,7 @@
 			<ui:define name="showBook">
 				<!-- 
 				Pour acceder aux proprietes de bookBean, il faut passer par le controller
-		 		-->
+		 		--> 
 		
 				<!-- h est l'extension de JSF -->
 				<!-- #name => name du @ManagedBean -->
@@ -48,6 +48,13 @@
 				<br />
 				<h:commandButton action="#{bookController.getBookById}"
 								value="Search Book By Id" />
+				</h:form>
+			</ui:define>
+			
+			<ui:define name="showBooks">
+				<h:form>
+					<h:commandButton action="#{booksController.getAllBooks}"
+									value="Show me the books" />
 				</h:form>
 			</ui:define>
 			

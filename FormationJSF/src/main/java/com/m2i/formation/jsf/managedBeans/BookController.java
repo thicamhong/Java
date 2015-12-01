@@ -2,11 +2,7 @@ package com.m2i.formation.jsf.managedBeans;
 
 import javax.faces.bean.ManagedBean;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import com.m2i.formation.media.entities.Media;
-import com.m2i.formation.media.repositories.MediaRepository;
 import com.m2i.formation.media.services.MainService;
 import com.m2i.formation.media.services.SpringSingleton;
 
@@ -41,8 +37,7 @@ public class BookController {
 		
 		// Evite de retourner "showBook" ==> Evite les fautes d'orthographes
 		// En passant les enum, si ce n'est pas bon, cela va souligner en rouge
-		//return BookControllerEnum.showBook.toString();
-		return BookControllerEnum.page_one.toString();
+		return BookControllerEnum.showBook.toString();	
 		
 	}
 	
@@ -60,8 +55,8 @@ public class BookController {
 	
 	public String getBookById() {
 		// Acces a la BDD : Appel
-		@SuppressWarnings("resource")
 		MainService ms = SpringSingleton.getInstance().getBean("mainService", MainService.class);
+		
 		
 		Media m = ms.getMediaRepository().getById(book.getId());
 		
