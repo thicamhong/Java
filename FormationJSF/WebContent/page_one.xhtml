@@ -1,0 +1,57 @@
+<!-- On commente ca sinon cela afichera le contenu des jsp : <?xml version="1.0" encoding="ISO-8859-1" ?> -->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" version="2.0">
+	<jsp:directive.page language="java"
+		contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" />
+	<jsp:text>
+		<![CDATA[ <?xml version="1.0" encoding="ISO-8859-1" ?> ]]>
+	</jsp:text>
+	<jsp:text>
+		<![CDATA[ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> ]]>
+	</jsp:text>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+	<h:body>
+		<ui:composition template="/template.xhtml">
+			<ui:param name="title" value="HomePage"></ui:param>
+			
+			<ui:define name="index">
+				<!-- Pour faire une action il faut un formulaire -->
+				<h:form>
+					<h:commandButton action="#{bookController.getSampleBook}"
+						value="Get Sample Book" />
+				</h:form>
+			</ui:define>
+			
+			<ui:define name="showBook">
+				<!-- 
+				Pour acceder aux proprietes de bookBean, il faut passer par le controller
+		 		-->
+		
+				<!-- h est l'extension de JSF -->
+				<!-- #name => name du @ManagedBean -->
+				<!-- myInt : propriete public de cette classe #name -->
+				<h:outputLabel value="#{bookController.book.id}" />
+				<h:outputLabel value="#{bookController.book.title}" />
+				<h:outputLabel value="#{bookController.book.priceVAT}" />
+			</ui:define>
+			
+			
+			<ui:define name="getBookById">
+				<h:form>
+	
+				Id : <h:inputText value="#{bookController.book.id}" />
+				<br />
+				<h:commandButton action="#{bookController.getBookById}"
+								value="Search Book By Id" />
+				</h:form>
+			</ui:define>
+			
+		</ui:composition>
+	</h:body>
+</html>
+</jsp:root>

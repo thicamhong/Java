@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:tx="http://www.springframework.org/schema/tx"
+xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx.xsd">
+<!-- spring-beans.xsd : permet d'avoir l'IntelliSense -->
+
+	<!-- scope : duree de vie du Bean -->
+	<!-- class : qualified name du bean -->
+	<bean id="media" class="com.m2i.formation.media.entities.Media" scope="prototype">
+	</bean>
+	
+	<!-- Le scope de mediaRepository est change en prototype au lieu de singleton car dans la vraie vie on n'utilise pas singleton -->
+	<bean id="mediaRepository" class="com.m2i.formation.media.repositories.MediaRepository" scope="prototype">
+		<property name="entityManager" ref="entityManager"></property>
+	</bean>
+	
+	<bean id="media2Repository" class="com.m2i.formation.media.repositories.Media2Repository" scope="prototype">
+	</bean>
+	
+	<bean id="authorRepository" class="com.m2i.formation.media.repositories.AuthorRepository" scope="prototype">
+		<property name="entityManager" ref="entityManager"></property>
+	</bean>
+	
+	<!-- Pour fonctionner, MainService a deux dependances : MediaRepository et AuthorRepository -->
+	<!-- On va donc creer un bean pour authorRepository. Le bean mediaRepository est deja fait 
+	 -->
+	<bean id="mainService" class="com.m2i.formation.media.services.MainService" scope="prototype">
+		<!-- Avec ces proprietes, on fait du IoD -->
+		<!-- Spring va les creer automatiquement et gerer leur duree de vie => i lfera les new lui meme -->
+		<!-- Si on a dans le code l'annotation @Autowired, les lignes ci-dessous ne servent plus
+		car spring va chercher s'ils existent en Bean -->
+		<!-- name : nom de la propriete dans MainService -->
+		<!-- Ref : nom du bean reference, dans id -->
+		<property name="mediaRepository" ref="mediaRepository"></property>
+		<property name="authorRepository" ref="authorRepository"></property>
+	</bean>
+  
+	<bean id="entityManagerFactory" class="javax.persistence.Persistence" factory-method="createEntityManagerFactory">
+		<constructor-arg value="FormationJPA" />
+	</bean>
+	
+	<bean id="entityManager" factory-bean="entityManagerFactory" factory-method="createEntityManager">
+	</bean>
+
+</beans>

@@ -1,5 +1,6 @@
 package com.m2i.formation.jsf.managedBeans;
 
 public enum BookControllerEnum {
-	showBook
+	showBook,
+	page_one
 }

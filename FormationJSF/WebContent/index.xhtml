@@ -10,24 +10,21 @@
 	<jsp:text>
 		<![CDATA[ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> ]]>
 	</jsp:text>
+	<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Insert title here</title>
+</head>
+<body>
+	<f:view>
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+		<!-- Pour faire une action il faut un formulaire -->
+		<h:form>
+			<h:commandButton action="#{bookController.getSampleBook}"
+				value="Get Sample Book" />
+		</h:form>
 
-
-	<h:body>
-		<ui:composition template="/template.xhtml">
-			<ui:param name="title" value="HomePage"></ui:param>
-			
-			<ui:define name="index">
-				<!-- Pour faire une action il faut un formulaire -->
-				<h:form>
-					<h:commandButton action="#{bookController.getSampleBook}"
-						value="Get Sample Book" />
-				</h:form>
-			</ui:define>
-			
-		</ui:composition>
-	</h:body>
-</html>
+	</f:view>
+</body>
+	</html>
 </jsp:root>

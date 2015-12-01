@@ -1,6 +1,7 @@
 package com.m2i.formation.jsf.managedBeans;
 
 import javax.faces.bean.ManagedBean;
+
 // Bean ne contenant que des data
 @ManagedBean(name="bookBean")
 public class BookBean {
