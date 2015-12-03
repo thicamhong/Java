@@ -15,15 +15,17 @@
 	</properties>
 
 	<dependencies>
+		<!-- Changement de version car no compatible av richFace -->
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-api</artifactId>
-			<version>2.1.13</version>
+			<version>2.2.12</version>
 		</dependency>
+		<!-- Changement de version car no compatible av richFace -->
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-impl</artifactId>
-			<version>2.1.13</version>
+			<version>2.2.12</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -35,13 +37,13 @@
 			<artifactId>FormationJPA</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.1-api</artifactId>
 			<version>1.0.0.Final</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
@@ -102,6 +104,17 @@
 			<artifactId>spring-orm</artifactId>
 			<version>4.2.3.RELEASE</version>
 		</dependency>
+
+		
+		<!-- Pour faire du RichFace -->
+		<dependency>
+			<groupId>org.richfaces</groupId>
+			<artifactId>richfaces</artifactId>
+			<version>4.5.11.Final</version>
+		</dependency>
+
+
+
 	</dependencies>
 
 	<build>

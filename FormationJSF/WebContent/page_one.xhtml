@@ -11,54 +11,83 @@
 		<![CDATA[ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> ]]>
 	</jsp:text>
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:a4j="http://richfaces.org/a4j"
+		xmlns:rich="http://richfaces.org/rich">
+<h:head>
+	<f:loadBundle basename="com.m2i.formation.bundles.errorMessage"
+		var="errorMsg" />
+</h:head>
 
+<h:body>
+	<ui:composition template="/template.xhtml">
+		<ui:param name="title" value="HomePage"></ui:param>
 
-	<h:body>
-		<ui:composition template="/template.xhtml">
-			<ui:param name="title" value="HomePage"></ui:param>
-			
-			<ui:define name="index">
-				<!-- Pour faire une action il faut un formulaire -->
-				<h:form>
-					<h:commandButton action="#{bookController.getSampleBook}"
-						value="Get Sample Book" />
-				</h:form>
-			</ui:define>
-			
-			<ui:define name="showBook">
-				<!-- 
+		<ui:define name="index">
+			<!-- Pour faire une action il faut un formulaire -->
+			<h:form>
+				<h:commandButton action="#{bookController.getSampleBook}"
+					value="Get Sample Book" />
+			</h:form>
+		</ui:define>
+
+		<ui:define name="showBook">
+			<!-- 
 				Pour acceder aux proprietes de bookBean, il faut passer par le controller
-		 		--> 
-		
-				<!-- h est l'extension de JSF -->
-				<!-- #name => name du @ManagedBean -->
-				<!-- myInt : propriete public de cette classe #name -->
-				<h:outputLabel value="#{bookController.book.id}" />
-				<h:outputLabel value="#{bookController.book.title}" />
-				<h:outputLabel value="#{bookController.book.priceVAT}" />
-			</ui:define>
-			
-			
-			<ui:define name="getBookById">
-				<h:form>
+		 		-->
+
+			<!-- h est l'extension de JSF -->
+			<!-- #name => name du @ManagedBean -->
+			<!-- myInt : propriete public de cette classe #name -->
+			<h:outputLabel value="#{bookController.book.id}" />
+			<h:outputLabel value="#{bookController.book.title}" />
+			<h:outputLabel value="#{bookController.book.priceVAT}" />
+		</ui:define>
+
+
+		<ui:define name="getBookById">
+			<h:form>
 	
 				Id : <h:inputText value="#{bookController.book.id}" />
 				<br />
 				<h:commandButton action="#{bookController.getBookById}"
-								value="Search Book By Id" />
-				</h:form>
-			</ui:define>
-			
-			<ui:define name="showBooks">
-				<h:form>
-					<h:commandButton action="#{booksController.getAllBooks}"
-									value="Show me the books" />
-				</h:form>
-			</ui:define>
-			
-		</ui:composition>
-	</h:body>
-</html>
+					value="Search Book By Id" />
+			</h:form>
+		</ui:define>
+
+		<ui:define name="showBooks">
+			<h:form>
+				<h:commandButton action="#{booksController.getAllBooks}"
+					value="Show me the books" />
+			</h:form>
+		</ui:define>
+
+		<ui:define name="insertABook">
+			Veuiller saisir le nouveau book :
+			<!-- Pour faire une action il faut un formulaire -->
+			<h:form>
+				<h:inputText id="title" value="#{bookController.book.title}"
+					requiredMessage="#{errorMsg.validateRequired}">
+					<f:validateRequired></f:validateRequired>
+				</h:inputText>
+				<h:message for="title" errorStyle="color:red" />
+				<!-- h:message for="title" errorStyle="color:red"/-->
+				<br />
+				<h:inputText id="price" value="#{bookController.book.price}"
+					requiredMessage="#{errorMsg.validateLongRange}">
+					<f:validateDoubleRange minimum="0" maximum="1000"></f:validateDoubleRange>
+				</h:inputText>
+				<h:message for="price" errorStyle="color:red" />
+				<br />
+				<h:commandButton value="Insert a book">
+
+				</h:commandButton>
+			</h:form>
+		</ui:define>
+
+
+	</ui:composition>
+</h:body>
+	</html>
 </jsp:root>

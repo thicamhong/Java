@@ -4,6 +4,7 @@ import javax.faces.bean.ManagedBean;
 
 import com.m2i.formation.media.entities.Media;
 import com.m2i.formation.media.services.MainService;
+import com.m2i.formation.media.services.ServiceException;
 import com.m2i.formation.media.services.SpringSingleton;
 
 @ManagedBean(name="bookController")
@@ -42,13 +43,23 @@ public class BookController {
 	}
 	
 	
-	public String insertBook() {
+	public String insertBook() throws ServiceException {
 		//insert dans la base de donnee
 		// Si on y accede, on aura les donnees
+		// Acces a la BDD : Appel
+		MainService ms = SpringSingleton.getInstance().getBean("mainService", MainService.class);
+		
+		//Media m = ms.getMediaRepository().getById(book.getId());
+		Media m = new Media();
+		m.setTitle(book.getTitle());
+		m.setPrice((float)book.getPrice());
+		
+		ms.insertMedia(m);
+				
 		
 		// Evite de retourner "showBook" ==> Evite les fautes d'orthographes
 		// En passant les enum, si ce n'est pas bon, cela va souligner en rouge
-		return BookControllerEnum.showBook.toString();
+		return BookControllerEnum.insertBook.toString();
 		
 	}
 	
