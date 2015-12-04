@@ -59,7 +59,7 @@ public class BookController {
 		
 		// Evite de retourner "showBook" ==> Evite les fautes d'orthographes
 		// En passant les enum, si ce n'est pas bon, cela va souligner en rouge
-		return BookControllerEnum.insertBook.toString();
+		return BookControllerEnum.showBook.toString();
 		
 	}
 	

@@ -18,8 +18,8 @@
 </head>
 <body>
 	<ui:composition template="/template.xhtml">
-			<ui:param name="title" value="Show the books"></ui:param>
-			
+			<ui:param name="showBooks" value="Show the books"></ui:param>
+			Here is the book list
 			<ui:define name="showBooks">
 				<!-- value doit contenir une collection => Le serveur doit avoir une collection de data -->
 				<h:dataTable var="book" value="#{booksController.books}">

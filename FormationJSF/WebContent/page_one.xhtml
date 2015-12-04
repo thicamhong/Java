@@ -1,6 +1,7 @@
 <!-- On commente ca sinon cela afichera le contenu des jsp : <?xml version="1.0" encoding="ISO-8859-1" ?> -->
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html" version="2.0">
 	<jsp:directive.page language="java"
 		contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" />
@@ -12,12 +13,11 @@
 	</jsp:text>
 
 	<html xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:ui="http://java.sun.com/jsf/facelets"
 		xmlns:a4j="http://richfaces.org/a4j"
 		xmlns:rich="http://richfaces.org/rich">
 <h:head>
-	<f:loadBundle basename="com.m2i.formation.bundles.errorMessage"
-		var="errorMsg" />
+	<!-- f:loadBundle basename="com.m2i.formation.bundles.errorMessage"
+		var="errorMsg" /-->
 </h:head>
 
 <h:body>
@@ -33,18 +33,10 @@
 		</ui:define>
 
 		<ui:define name="showBook">
-			<!-- 
-				Pour acceder aux proprietes de bookBean, il faut passer par le controller
-		 		-->
-
-			<!-- h est l'extension de JSF -->
-			<!-- #name => name du @ManagedBean -->
-			<!-- myInt : propriete public de cette classe #name -->
 			<h:outputLabel value="#{bookController.book.id}" />
 			<h:outputLabel value="#{bookController.book.title}" />
 			<h:outputLabel value="#{bookController.book.priceVAT}" />
 		</ui:define>
-
 
 		<ui:define name="getBookById">
 			<h:form>
@@ -56,7 +48,14 @@
 			</h:form>
 		</ui:define>
 
-		<ui:define name="showBooks">
+		<ui:define name="showBooks" id="bookList">
+			<h:form>
+				<h:commandButton action="#{booksController.getAllBooks}"
+					value="Show me the books" />
+			</h:form>
+		</ui:define>
+
+		<ui:define name="showBooks" id="bookList">
 			<h:form>
 				<h:commandButton action="#{booksController.getAllBooks}"
 					value="Show me the books" />
@@ -67,21 +66,18 @@
 			Veuiller saisir le nouveau book :
 			<!-- Pour faire une action il faut un formulaire -->
 			<h:form>
-				<h:inputText id="title" value="#{bookController.book.title}"
-					requiredMessage="#{errorMsg.validateRequired}">
+				<h:inputText id="title" value="#{bookController.book.title}">
 					<f:validateRequired></f:validateRequired>
 				</h:inputText>
 				<h:message for="title" errorStyle="color:red" />
-				<!-- h:message for="title" errorStyle="color:red"/-->
 				<br />
-				<h:inputText id="price" value="#{bookController.book.price}"
-					requiredMessage="#{errorMsg.validateLongRange}">
-					<f:validateDoubleRange minimum="0" maximum="1000"></f:validateDoubleRange>
+				<h:inputText id="price" value="#{bookController.book.price}">
+					<f:validateDoubleRange minimum="0.1" maximum="1000"></f:validateDoubleRange>
 				</h:inputText>
 				<h:message for="price" errorStyle="color:red" />
 				<br />
-				<h:commandButton value="Insert a book">
-
+				<h:commandButton value="Insert a book" action="#{bookController.insertBook}">
+					
 				</h:commandButton>
 			</h:form>
 		</ui:define>

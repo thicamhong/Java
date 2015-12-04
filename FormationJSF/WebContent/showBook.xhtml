@@ -1,33 +1,35 @@
 <!-- On commente ca sinon cela afichera le contenu des jsp : <?xml version="1.0" encoding="ISO-8859-1" ?> -->
-<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" version="2.0">
-    <jsp:directive.page language="java"
-        contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" />
-    <jsp:text>
-        <![CDATA[ <?xml version="1.0" encoding="ISO-8859-1" ?> ]]>
-    </jsp:text>
-    <jsp:text>
-        <![CDATA[ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> ]]>
-    </jsp:text>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html" version="2.0">
+	<jsp:directive.page language="java"
+		contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" />
+	<jsp:text>
+		<![CDATA[ <?xml version="1.0" encoding="ISO-8859-1" ?> ]]>
+	</jsp:text>
+	<jsp:text>
+		<![CDATA[ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> ]]>
+	</jsp:text>
+	<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Insert title here</title>
 </head>
 <body>
-<f:view>
 
-<!-- 
-Pour acceder aux proprietes de bookBean, il faut passer par le controller
- -->
+	<ui:composition template="/template.xhtml">
+		<ui:param name="title" value="Show the book"></ui:param>
+		
+		<ui:define name="showBook">
+			<b>Book information : </b> <br/>
+			ID : <h:outputText value="#{bookController.book.id}" /> <br/>
+			TITRE : <h:outputText value="#{bookController.book.title}" /> <br/>
+			PRICE : <h:outputText value="#{bookController.book.price}" /> <br/>
+			CATEGORY : <h:outputText value="#{bookController.book.category}" /> <br/>		
+		</ui:define>
+	</ui:composition>
 
-
-<!-- h est l'extension de JSF -->
-<!-- #name => name du @ManagedBean -->
-<!-- myInt : propriete public de cette classe #name -->
-<h:outputLabel value="#{bookController.book.id}" />
-<h:outputLabel value="#{bookController.book.title}" />
-<h:outputLabel value="#{bookController.book.priceVAT}" />
-</f:view>
 </body>
-</html>
+	</html>
 </jsp:root>

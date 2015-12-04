@@ -5,6 +5,10 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
+import com.m2i.formation.media.entities.Media;
+import com.m2i.formation.media.services.MainService;
+import com.m2i.formation.media.services.SpringSingleton;
+
 @ManagedBean(name="booksController")
 public class BooksController {
 
@@ -28,6 +32,7 @@ public class BooksController {
 	public String getAllBooks()
 	{
 		// FAKE DATA
+		/*
 		BookBean book = new BookBean();
 		book.setId(10);
 		book.setPrice(16.5);
@@ -39,6 +44,23 @@ public class BooksController {
 		
 		books.add(book);
 		books.add(book2);
+		*/
+		
+		// On recupere les donnees de la BDD
+		MainService service = SpringSingleton.getInstance().getBean("mainService", MainService.class);
+		List<Media> medias = service.getMediaRepository().getAll();
+		
+		// On convertit les données de la BDD en BookBean
+		for(Media media:medias)
+		{
+			BookBean book = new BookBean();
+			book.setId(media.getId());
+			book.setTitle(media.getTitle());
+			book.setPrice(media.getPrice());
+			book.setCategory(media.getCategory());
+			
+			books.add(book);
+		}
 				
 		return BookControllerEnum.showBooks.toString();
 	}

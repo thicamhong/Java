@@ -3,7 +3,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:rich="http://richfaces.org/rich"
-	xmlns:h="http://java.sun.com/jsf/html" version="2.0">
+	xmlns:h="http://java.sun.com/jsf/html" version="2.0"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 	<jsp:directive.page language="java"
 		contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" />
 	<jsp:text>
@@ -31,7 +32,7 @@
 						<h:inputText value="#{bookController.book.price}" />
 						<br />	
 						<h:commandButton value="Insert a book">
-							<a4j:support event="onClick" action="#{}"></a4j:support>
+							
 						</h:commandButton>
 					</h:form>
 				</ui:define>

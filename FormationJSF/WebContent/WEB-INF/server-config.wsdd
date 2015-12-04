@@ -7,8 +7,8 @@
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
-  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:requestFlow>
    <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
     <ns1:parameter name="scope" value="session"/>
@@ -33,24 +33,15 @@
   <ns1:parameter name="className" value="org.apache.axis.Version"/>
  </ns1:service>
  <ns1:service name="HelloService" provider="java:RPC" style="wrapped" use="literal">
-  <ns2:operation name="getHello" qname="ns1:getHello" returnQName="ns1:getHelloReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://managedBeans.jsf.formation.m2i.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/"/>
-  <ns1:operation name="getById" qname="ns2:getById" returnQName="ns2:getByIdReturn" returnType="ns2:BookBean" soapAction="" xmlns:ns2="http://managedBeans.jsf.formation.m2i.com">
-   <ns1:parameter qname="ns2:id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-  </ns1:operation>
-  <ns1:operation name="getBook" qname="ns3:getBook" returnQName="ns3:getBookReturn" returnType="ns3:BookBean" soapAction="" xmlns:ns3="http://managedBeans.jsf.formation.m2i.com">
-   <ns1:parameter qname="ns3:id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-   <ns1:parameter qname="ns3:title" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-   <ns1:parameter qname="ns3:price" type="xsd:double" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-  </ns1:operation>
-  <ns1:parameter name="allowedMethods" value="getBook getById getHello"/>
+  <ns1:parameter name="allowedMethods" value="*"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="HelloService"/>
-  <ns1:parameter name="className" value="com.m2i.formation.jsf.managedBeans.HelloService"/>
+  <ns1:parameter name="className" value="com.m2i.formation.jsf.managedBeans.HelloServiceSoapBindingSkeleton"/>
   <ns1:parameter name="wsdlServicePort" value="HelloService"/>
   <ns1:parameter name="schemaQualified" value="http://managedBeans.jsf.formation.m2i.com"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://managedBeans.jsf.formation.m2i.com"/>
   <ns1:parameter name="wsdlServiceElement" value="HelloServiceService"/>
-  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns4:BookBean" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.m2i.formation.jsf.managedBeans.BookBean" xmlns:ns4="http://managedBeans.jsf.formation.m2i.com"/>
+  <ns2:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns1:BookBean" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.m2i.formation.jsf.managedBeans.BookBean" xmlns:ns1="http://managedBeans.jsf.formation.m2i.com" xmlns:ns2="http://xml.apache.org/axis/wsdd/"/>
  </ns1:service>
  <ns1:transport name="http">
   <ns1:requestFlow>

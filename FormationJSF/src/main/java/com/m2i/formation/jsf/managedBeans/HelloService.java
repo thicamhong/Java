@@ -1,51 +1,21 @@
-package com.m2i.formation.jsf.managedBeans;
+/**
+ * HelloService.java
+ *
+ * This file was auto-generated from WSDL
+ * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
+ */
 
-import java.awt.print.Book;
+package com.m2i.formation.jsf.managedBeans;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
-import com.m2i.formation.media.entities.Media;
-import com.m2i.formation.media.services.MainService;
-import com.m2i.formation.media.services.SpringSingleton;
-
-
-// Un Service est une classe comme une autre qui prend des input param et retourne des output param
 @WebService
-public class HelloService {
-
-	// On met cette annotation a toutes les methodes que l'on souhaite
+public interface HelloService extends java.rmi.Remote {
 	@WebMethod
-	public String getHello()
-	{
-		return "Hello HONG";
-	}
-
-	
+    public java.lang.String getHello() throws java.rmi.RemoteException;
 	@WebMethod
-	public BookBean getBook(int id, String title, double price)
-	{
-		BookBean book = new BookBean();
-		book.setId(id);
-		book.setPrice(price);
-		book.setTitle(title);
-		
-		return book;
-	}
-	
-	
+    public com.m2i.formation.jsf.managedBeans.BookBean getById(int id) throws java.rmi.RemoteException;
 	@WebMethod
-	public BookBean getById(int id)
-	{
-		MainService ms = SpringSingleton.getInstance().getBean("mainService", MainService.class);
-		
-		Media media = ms.getMediaRepository().getById(6);
-		
-		BookBean book = new BookBean();
-		book.setId(media.getId());
-		book.setPrice(media.getPrice());
-		book.setTitle(media.getTitle());
-		
-		return book;
-	}
+    public com.m2i.formation.jsf.managedBeans.BookBean getBook(int id, java.lang.String title, double price) throws java.rmi.RemoteException;
 }
