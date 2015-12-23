@@ -44,7 +44,7 @@ phonecatServices.factory('Phone', ['$resource',
             query:{method:'GET', params:{phoneId:'phones'}, isArray:true}
         });
     */
-	return $resource('http://localhost:8080/FormationJSF/rs/phones/:phoneId', {}, {
+	return $resource('http://localhost:61737/angular/phones/:phoneId', {}, {
         query:{method:'GET', params:{phoneId:'all'}, isArray:true}
     });
     }]);
